@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NM Premium Detailing | North Mankato Car Detailing</title>
-<meta name="description" content="Premium car detailing located in North Mankato, MN. Interior, exterior, and full detail packages built to protect your paint through Minnesota winters. Starting at $7[...]">
+<meta name="description" content="Premium car detailing located in North Mankato, MN. Interior, exterior, and full detail packages built to protect your paint through Minnesota winters. Starting at $7[...]>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -76,12 +76,12 @@
     transform:skewX(-20deg);transition:left .55s ease;
   }
   .btn:hover::after{left:130%;}
-  .btn-primary{background:var(--blue-500);color:#fff;box-shadow:0 8px 24px -6px rgba(47,111,255,0.55);}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(47,111,255,0.7);}
-  .btn-chrome{background:var(--chrome-grad);color:#0B1220;box-shadow:0 8px 20px -8px rgba(0,0,0,0.5);}
-  .btn-chrome:hover{transform:translateY(-2px);}
-  .btn-outline{background:transparent;color:var(--chrome-100);border-color:var(--chrome-600);}
-  .btn-outline:hover{border-color:var(--blue-400);color:var(--blue-300);}
+  .btn-primary{background:var(--blue-500);color:#fff;box-shadow:0 8px 24px -6px rgba(47,111,255,0.55);} 
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(47,111,255,0.7);} 
+  .btn-chrome{background:var(--chrome-grad);color:#0B1220;box-shadow:0 8px 20px -8px rgba(0,0,0,0.5);} 
+  .btn-chrome:hover{transform:translateY(-2px);} 
+  .btn-outline{background:transparent;color:var(--chrome-100);border-color:var(--chrome-600);} 
+  .btn-outline:hover{border-color:var(--blue-400);color:var(--blue-300);} 
   .btn-block{width:100%;justify-content:center;}
 
   /* ---------- HEADER ---------- */
@@ -95,8 +95,8 @@
   .brand-name{font-family:var(--font-display);font-size:0.95rem;letter-spacing:0.05em;text-transform:uppercase;line-height:1.1;}
   .brand-name span{display:block;font-family:var(--font-mono);font-size:0.62rem;color:var(--chrome-400);letter-spacing:0.16em;text-transform:uppercase;margin-top:2px;}
   .nav-links{display:flex;gap:32px;font-size:0.92rem;color:var(--chrome-300);}
-  .nav-links a:hover{color:var(--blue-300);}
-  .nav-links a[aria-current="page"]{color:var(--blue-300);}
+  .nav-links a:hover{color:var(--blue-300);} 
+  .nav-links a[aria-current="page"]{color:var(--blue-300);} 
   .nav-cta{display:flex;align-items:center;}
   .nav-cta .btn{padding:12px 20px;font-size:0.85rem;}
   @media (max-width:800px){
@@ -145,16 +145,20 @@
     position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--border);
     box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
   }
-  .ba-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;}
+  /* Make the image containers fill the frame and position the photos absolutely so the clip/handle align exactly with visible pixels */
+  .ba-img{position:absolute;inset:0;}
   .ba-before{background:linear-gradient(135deg,#101F36 0 16px,#0B1729 16px 32px);} 
   .ba-after{background:linear-gradient(135deg,#16304F 0 16px,#0F2340 16px 32px);} 
   .ba-tag{
     position:absolute;top:16px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;
-    background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4px;
+    background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4px;text-transform:uppercase;
   }
   .ba-before .ba-tag{left:16px;}
   .ba-after .ba-tag{right:16px;}
-  .ba-caption{font-family:var(--font-mono);font-size:0.78rem;color:var(--chrome-400);max-width:220px;}
+  /* captions and tags should sit above the absolutely-positioned image */
+  .ba-caption{font-family:var(--font-mono);font-size:0.78rem;color:var(--chrome-400);max-width:220px;z-index:2}
+  .ba-before .ba-caption{left:16px;bottom:16px;position:absolute;text-align:left;}
+  .ba-after .ba-caption{right:16px;bottom:16px;position:absolute;text-align:right;}
   .ba-after{clip-path:inset(0 0 0 50%);} 
   .ba-handle{
     position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--chrome-grad);
@@ -176,13 +180,19 @@
 
   /* Ensure actual images fill the before/after frames */
   .ba-img img{
+    position:absolute;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
     pointer-events:none;
     user-select:none;
+    z-index:1;
   }
+
+  /* Ensure tags/captions sit above the image */
+  .ba-tag{z-index:2}
 
   /* ---------- PRICING ---------- */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -191,7 +201,7 @@
     background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;
     display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease;
   }
-  .tier:hover{transform:translateY(-4px);border-color:var(--chrome-600);}
+  .tier:hover{transform:translateY(-4px);border-color:var(--chrome-600);} 
   .tier-featured{border-color:var(--blue-400);box-shadow:0 0 0 1px var(--blue-400),0 24px 48px -20px rgba(47,111,255,0.4);} 
   .tier-photo{
     aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#101F36 0 14px,#0B1729 14px 28px);
@@ -204,7 +214,7 @@
   .tier-body{padding:28px;display:flex;flex-direction:column;flex:1;gap:14px;}
   .tier-name{font-size:1.35rem;}
   .tier-tagline{font-family:var(--font-mono);font-size:0.78rem;color:var(--blue-300);letter-spacing:0.04em;text-transform:uppercase;margin-top:-8px;}
-  .tier-price{font-family:var(--font-mono);font-size:2.1rem;font-weight:600;color:var(--chrome-100);}
+  .tier-price{font-family:var(--font-mono);font-size:2.1rem;font-weight:600;color:var(--chrome-100);} 
   .tier-footnote{font-size:0.72rem;color:var(--chrome-600);margin-top:-6px;}
   .tier-list{display:flex;flex-direction:column;gap:10px;margin-top:4px;flex:1;}
   .tier-list li{font-size:0.92rem;color:var(--chrome-300);display:flex;gap:10px;align-items:flex-start;}
@@ -213,7 +223,7 @@
     margin-top:36px;text-align:center;color:var(--chrome-400);font-size:0.95rem;
     border-top:1px solid var(--border);padding-top:28px;
   }
-  .addon-note strong{color:var(--chrome-100);}
+  .addon-note strong{color:var(--chrome-100);} 
 
   /* ---------- PROCESS ---------- */
   .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
@@ -257,7 +267,7 @@
     background:var(--bg-deep);border:1px solid var(--chrome-600);border-radius:7px;padding:13px 14px;
     color:var(--chrome-100);font-family:var(--font-body);font-size:0.95rem;
   }
-  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue-400);}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue-400);} 
   .field textarea{resize:vertical;min-height:80px;}
   .form-note{font-size:0.78rem;color:var(--chrome-600);text-align:center;}
   .form-status{font-family:var(--font-mono);font-size:0.85rem;text-align:center;min-height:1.2em;}
@@ -277,7 +287,7 @@
   footer .foot-links a:hover{color:var(--blue-300);} 
   .foot-todo{color:var(--blue-300);font-family:var(--font-mono);font-size:0.8rem;}
   .foot-bottom{border-top:1px solid var(--border);padding-top:24px;font-size:0.8rem;color:var(--chrome-600);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-</style>
+ </style>
 </head>
 <body>
 
