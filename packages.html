@@ -185,8 +185,9 @@
   .tier-featured{border-color:var(--blue-400);box-shadow:0 0 0 1px var(--blue-400),0 24px 48px -20px rgba(47,111,255,0.4);}
   .tier-photo{
     aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#101F36 0 14px,#0B1729 14px 28px);
-    display:flex;align-items:center;justify-content:center;padding:16px;position:relative;
+    position:relative;overflow:hidden;
   }
+  .tier-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .tier-badge{
     position:absolute;top:14px;right:14px;background:var(--blue-500);color:#fff;font-family:var(--font-mono);
     font-size:0.65rem;letter-spacing:0.08em;padding:5px 10px;border-radius:4px;text-transform:uppercase;
@@ -301,7 +302,7 @@
       <div class="tiers">
 
         <div class="tier">
-          <div class="tier-photo"><span class="slot-label">◈ Photo — 800×500 — exterior wash / vacuum shot</span></div>
+          <div class="tier-photo"><img src="img/maintenance.jpg" alt="Maintenance package" onerror="this.style.display='none'"></div>
           <div class="tier-body">
             <h3 class="tier-name">Maintenance</h3>
             <div class="tier-tagline">For Repeat Clients</div>
@@ -320,7 +321,7 @@
         <div class="tier tier-featured">
           <div class="tier-photo">
             <span class="tier-badge">Most Popular</span>
-            <span class="slot-label">◈ Photo — 800×500 — carpet/seat shampoo shot</span>
+            <img src="img/exclusive.jpg" alt="Exclusive package" onerror="this.style.display='none'">
           </div>
           <div class="tier-body">
             <h3 class="tier-name">Exclusive</h3>
@@ -339,7 +340,7 @@
         </div>
 
         <div class="tier">
-          <div class="tier-photo"><span class="slot-label">◈ Photo — 800×500 — clay bar/wax or headlight restoration shot</span></div>
+          <div class="tier-photo"><img src="img/presidential.jpg" alt="Presidential package" onerror="this.style.display='none'"></div>
           <div class="tier-body">
             <h3 class="tier-name">Presidential</h3>
             <div class="tier-tagline">Total, Luxurious Refresh</div>
@@ -353,7 +354,6 @@
               <li>Headlight restoration</li>
               <li>Clay bar + wax sealant</li>
               <li>Tire + interior + exterior trim shine</li>
-      
             </ul>
             <p class="tier-footnote">*Not all stains can be removed.</p>
           </div>
