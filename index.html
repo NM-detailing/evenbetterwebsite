@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NM Premium Detailing | North Mankato Car Detailing</title>
-<meta name="description" content="Premium car detailing located in North Mankato, MN. Interior, exterior, and full detail packages built to protect your paint through Minnesota winters. Starting at[...]">
+<meta name="description" content="Premium car detailing located in North Mankato, MN. Interior, exterior, and full detail packages built to protect your paint through Minnesota winters. Starting at $70.">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -120,8 +120,7 @@
     display:flex;align-items:flex-start;justify-content:center;padding-top:40px;
   }
   .hero-photo-slot .slot-label{
-    font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--chrome-600);
-    border:1px dashed var(--chrome-600);padding:8px 14px;border-radius:4px;text-transform:uppercase;
+    display:none;
   }
   .hero::before{
     content:'';position:absolute;top:-20%;left:-30%;width:60%;height:160%;
@@ -148,16 +147,17 @@
 .ba-before{background:linear-gradient(135deg,#101F36 0 16px,#0B1729 16px 32px);z-index:1;}
 /* Use clip-path on the .ba-after layer so the images themselves are never resized or moved — only the visible portion changes. */
 .ba-after{background:linear-gradient(135deg,#16304F 0 16px,#0F2340 16px 32px);left:0;right:0;width:100%;overflow:visible;z-index:2;clip-path:inset(0 0 0 50%);-webkit-clip-path:inset(0 0 0 50%);} 
-.ba-tag{position:absolute;top:16px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4[...]
+.ba-tag{position:absolute;top:16px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4px;}
 .ba-before .ba-tag{left:16px;}
 .ba-after .ba-tag{right:16px;}
 .ba-caption{font-family:var(--font-mono);font-size:0.78rem;color:var(--chrome-400);max-width:220px;z-index:2;}
 .ba-before .ba-caption{left:16px;bottom:16px;position:absolute;text-align:left;}
 .ba-after .ba-caption{right:16px;bottom:16px;position:absolute;text-align:right;}
 .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--chrome-grad);transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(143,179,255,0.6);z-index:3;}
-.ba-handle::after{content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;background:var(--chrome-grad);color:#0B1220;border-radius:50%;display:flex;alig[...]
+.ba-handle::after{content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;background:var(--chrome-grad);color:#0B1220;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;box-shadow:0 6px 16px rgba(0,0,0,0.5);z-index:3;}
 .ba-range{width:100%;margin-top:22px;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:var(--chrome-600);outline:none;cursor:ew-resize;}
 .ba-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--chrome-grad);border:2px solid var(--bg-deep);cursor:ew-resize;}
+.ba-hint{text-align:center;font-family:var(--font-mono);font-size:0.75rem;color:var(--chrome-400);margin-top:14px;}
 
   /* ---------- PRICING ---------- */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -280,7 +280,6 @@
   <section class="hero">
     <div class="hero-photo-slot" aria-hidden="true">
       <img src="img/IMG_2660.jpeg" alt="Freshly detailed car — wide shot" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
-      <span class="slot-label" style="position:relative;z-index:1;">◈ Hero photo — 1920×1080 — freshly detailed car, wide shot</span>
     </div>
     <div class="container hero-inner">
       <div class="eyebrow">North Mankato · Premium Car Detailing</div>
