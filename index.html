@@ -146,10 +146,8 @@
 .ba-img{position:absolute;inset:0;border-radius:10px;overflow:visible;}
 .ba-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none;z-index:1;}
 .ba-before{background:linear-gradient(135deg,#101F36 0 16px,#0B1729 16px 32px);z-index:1;}
-/* Use a width-based mask on the .ba-after container (overflow hidden) instead of clip-path.
-   This preserves object-fit behavior while allowing the after image to be clipped responsively. */
-/* Anchor the after layer to the right so the slider can reveal more of the before image when moved to the right. */
-.ba-after{background:linear-gradient(135deg,#16304F 0 16px,#0F2340 16px 32px);right:0;left:auto;width:50%;overflow:hidden;z-index:2;}
+/* Use clip-path on the .ba-after layer so the images themselves are never resized or moved — only the visible portion changes. */
+.ba-after{background:linear-gradient(135deg,#16304F 0 16px,#0F2340 16px 32px);left:0;right:0;width:100%;overflow:visible;z-index:2;clip-path:inset(0 0 0 50%);-webkit-clip-path:inset(0 0 0 50%);}
 .ba-tag{position:absolute;top:16px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4px;color:var(--chrome-100);z-index:3;}
 .ba-before .ba-tag{left:16px;}
 .ba-after .ba-tag{right:16px;}
@@ -381,13 +379,15 @@
 
   function setClip(v){
     const pct = Math.max(0, Math.min(100, Number(v)));
-    // use width-based masking (container overflow:hidden) instead of clip-path so the inner
-    // img can use object-fit reliably across browsers
-    // Anchor the after layer to the right and make its width inversely proportional to the slider
-    // so moving the slider to the right reveals more of the BEFORE image.
-    after.style.width = (100 - pct) + '%';
-    after.style.right = '0';
-    after.style.left = 'auto';
+    // Use clip-path (and -webkit-clip-path) on the AFTER layer so the images themselves
+    // are not resized or moved — only the visible portion changes. The value maps like this:
+    // pct = 0  -> after fully visible (covers before)
+    // pct = 100 -> after fully hidden (before fully visible)
+    const insetLeft = pct + '%';
+    const clip = `inset(0 0 0 ${insetLeft})`;
+    after.style.clipPath = clip;
+    after.style.webkitClipPath = clip;
+    // Keep the handle positioned at the same percentage
     handle.style.left = pct + '%';
     if (range.value != pct) range.value = pct;
   }
