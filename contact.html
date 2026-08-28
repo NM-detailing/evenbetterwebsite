@@ -141,24 +141,38 @@
 
   /* ---------- BEFORE/AFTER ---------- */
   .ba-slider{max-width:820px;margin:0 auto;}
-.ba-frame{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);} 
-/* Each .ba-img is a positioned layer that fills the frame. Keep the images using object-fit. */
-.ba-img{position:absolute;inset:0;border-radius:10px;overflow:visible;}
-.ba-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none;z-index:1;}
-.ba-before{background:linear-gradient(135deg,#101F36 0 16px,#0B1729 16px 32px);z-index:1;}
-/* Use clip-path on the .ba-after layer so the images themselves are never resized or moved — only the visible portion changes. */
-.ba-after{background:linear-gradient(135deg,#16304F 0 16px,#0F2340 16px 32px);left:0;right:0;width:100%;overflow:visible;z-index:2;clip-path:inset(0 0 0 50%);-webkit-clip-path:inset(0 0 0 50%);} 
-.ba-tag{position:absolute;top:16px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4px;}
-.ba-before .ba-tag{left:16px;}
-.ba-after .ba-tag{right:16px;}
-.ba-caption{font-family:var(--font-mono);font-size:0.78rem;color:var(--chrome-400);max-width:220px;z-index:2;}
-.ba-before .ba-caption{left:16px;bottom:16px;position:absolute;text-align:left;}
-.ba-after .ba-caption{right:16px;bottom:16px;position:absolute;text-align:right;}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--chrome-grad);transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(143,179,255,0.6);z-index:3;}
-.ba-handle::after{content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;background:var(--chrome-grad);color:#0B1220;border-radius:50%;display:flex;alig[...]
-.ba-range{width:100%;margin-top:22px;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;background:var(--chrome-600);outline:none;cursor:ew-resize;}
-.ba-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--chrome-grad);border:2px solid var(--bg-deep);cursor:ew-resize;}
-.ba-hint{text-align:center;font-family:var(--font-mono);font-size:0.75rem;color:var(--chrome-400);margin-top:14px;}
+  .ba-frame{
+    position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--border);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .ba-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;}
+  .ba-before{background:repeating-linear-gradient(135deg,#101F36 0 16px,#0B1729 16px 32px);}
+  .ba-after{background:repeating-linear-gradient(135deg,#16304F 0 16px,#0F2340 16px 32px);}
+  .ba-tag{
+    position:absolute;top:16px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;
+    background:rgba(7,13,24,0.7);border:1px solid var(--border);padding:6px 12px;border-radius:4px;
+  }
+  .ba-before .ba-tag{left:16px;}
+  .ba-after .ba-tag{right:16px;}
+  .ba-caption{font-family:var(--font-mono);font-size:0.78rem;color:var(--chrome-400);max-width:220px;}
+  .ba-after{clip-path:inset(0 0 0 50%);} 
+  .ba-handle{
+    position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--chrome-grad);
+    transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(143,179,255,0.6);
+  }
+  .ba-handle::after{
+    content:'⟷';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:42px;height:42px;background:var(--chrome-grad);color:#0B1220;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;
+    box-shadow:0 6px 16px rgba(0,0,0,0.5);
+  }
+  .ba-range{
+    width:100%;margin-top:22px;-webkit-appearance:none;appearance:none;height:4px;border-radius:4px;
+    background:var(--chrome-600);outline:none;cursor:ew-resize;
+  }
+  .ba-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--chrome-grad);border:2px solid var(--bg-deep);cursor:ew-resize;}
+  .ba-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--chrome-300);border:2px solid var(--bg-deep);cursor:ew-resize;}
+  .ba-hint{text-align:center;font-family:var(--font-mono);font-size:0.75rem;color:var(--chrome-400);margin-top:14px;}
 
   /* ---------- PRICING ---------- */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -287,8 +301,8 @@
       <div class="book-info" style="max-width:480px;">
         <div class="book-info-row"><span class="ic">📞</span> <a href="tel:5079780537">(507) 978-0537</a></div>
         <div class="book-info-row"><span class="ic">📍</span> Located in North Mankato</div>
-        <div class="book-info-row"><span class="ic">🕐</span> <span class="foot-todo">8AM-8PM</span></div>
-        <div class="book-info-row"><span class="ic">📘</span> <a class="foot-todo" href="https://g.page/r/CaaXF0Szj_mYEBM/review">Google reviews</a></div>
+        <div class="book-info-row"><span class="ic">🕐</span> <span class="foot-todo">◆ add your hours</span></div>
+        <div class="book-info-row"><span class="ic">📘</span> <span class="foot-todo">◆ add your Facebook link</span></div>
       </div>
 
       <div style="margin-top:12px;">
@@ -315,8 +329,8 @@
         <ul class="foot-links">
           <li><a href="tel:5079780537">(507) 978-0537</a></li>
           <li>Located in North Mankato</li>
-          <li class="foot-todo">8AM-8PM</li>
-          <li class="foot-todo"><a href="https://g.page/r/CaaXF0Szj_mYEBM/review">Google reviews</a></li>
+          <li class="foot-todo">◆ add your hours</li>
+          <li class="foot-todo">◆ add your Facebook link</li>
         </ul>
       </div>
       <div>
