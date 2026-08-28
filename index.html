@@ -369,55 +369,60 @@
 
 <script>
   // Before/after slider
-  (function(){
-    const range = document.getElementById('baRange');
-    const after = document.getElementById('baAfter');
-    const handle = document.getElementById('baHandle');
-    const frame = document.querySelector('.ba-frame');
+ (function(){
+  const range  = document.getElementById('baRange');
+  const after  = document.getElementById('baAfter');
+  const handle = document.getElementById('baHandle');
+  const frame  = document.querySelector('.ba-frame');
 
-    function setClip(v){
-      const pct = Math.max(0, Math.min(100, Number(v)));
-      const inset = `inset(0 0 0 ${pct}%)`;
-      // set both standard and WebKit-prefixed properties for broader browser support
-      after.style.clipPath = inset;
-      after.style.webkitClipPath = inset;
-      handle.style.left = pct + '%';
-      if (range.value != pct) range.value = pct;
-    }
+  function setClip(v){
+    const pct = Math.max(0, Math.min(100, Number(v)));
+    const inset = `inset(0 0 0 ${pct}%)`;
+    after.style.clipPath = inset;
+    after.style.webkitClipPath = inset;
+    handle.style.left = pct + '%';
+    if (range.value != pct) range.value = pct;
+  }
 
-    range.addEventListener('input', e => setClip(e.target.value));
-    setClip(range.value || 50);
+  range.addEventListener('input', e => setClip(e.target.value));
+  setClip(range.value || 50);
 
-    // allow clicking/dragging on the image frame to move the slider (pointer/touch support)
-    let dragging = false;
-    function pointerToPct(e){
-      const rect = frame.getBoundingClientRect();
-      const clientX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
-      const pct = ((clientX - rect.left) / rect.width) * 100;
-      return Math.max(0, Math.min(100, Math.round(pct)));
-    }
+  let dragging = false;
+  function pointerToPct(e){
+    const rect = frame.getBoundingClientRect();
+    const clientX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+    const pct = ((clientX - rect.left) / rect.width) * 100;
+    return Math.max(0, Math.min(100, Math.round(pct)));
+  }
 
-    if (window.PointerEvent) {
-      frame.addEventListener('pointerdown', (e) => { dragging = true; frame.setPointerCapture && frame.setPointerCapture(e.pointerId); setClip(pointerToPct(e)); });
-      frame.addEventListener('pointermove', (e) => { if (!dragging) return; setClip(pointerToPct(e)); });
-      frame.addEventListener('pointerup', (e) => { dragging = false; try{ frame.releasePointerCapture && frame.releasePointerCapture(e.pointerId); }catch(_){}});
-      frame.addEventListener('pointercancel', () => { dragging = false; });
-    } else {
-      // fallback to touch events
-      frame.addEventListener('touchstart', (e) => { setClip(pointerToPct(e)); }, {passive:true});
-      frame.addEventListener('touchmove', (e) => { setClip(pointerToPct(e)); }, {passive:true});
-    }
+  if (window.PointerEvent) {
+    frame.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      if (frame.setPointerCapture) frame.setPointerCapture(e.pointerId);
+      setClip(pointerToPct(e));
+    });
+    frame.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      setClip(pointerToPct(e));
+    });
+    frame.addEventListener('pointerup', (e) => {
+      dragging = false;
+      try { if (frame.releasePointerCapture) frame.releasePointerCapture(e.pointerId); } catch(_){}
+    });
+    frame.addEventListener('pointercancel', () => { dragging = false; });
+  } else {
+    frame.addEventListener('touchstart', (e) => { setClip(pointerToPct(e)); }, {passive:true});
+    frame.addEventListener('touchmove',  (e) => { setClip(pointerToPct(e)); }, {passive:true});
+  }
 
-    // keyboard support: nudge with arrow keys when not typing in a form
-    window.addEventListener('keydown', (e) => {
-      const active = document.activeElement;
-      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) return;
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-        e.preventDefault();
-        const step = e.shiftKey ? 10 : 2;
-        const delta = e.key === 'ArrowLeft' ? -step : step;
-        let val = Math.min(100, Math.max(0, Number(range.value) + delta));
-        setClip(val);
+  window.addEventListener('keydown', (e) => {
+    const active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) return;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      const step  = e.shiftKey ? 10 : 2;
+      const delta = e.key === 'ArrowLeft' ? -step : step;
+      setClip(Math.min(100, Math.max(0, Number(range.value) + delta)));
       }
     });
   })();
