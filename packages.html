@@ -512,8 +512,8 @@ document.getElementById('bookForm').addEventListener('submit', function (e) {
   })
     .then(function (res) {
       if (res.ok) {
-        okMsg.style.display = 'block';
-        form.reset();
+        window.location.href = 'booking-confirmation.html';
+        return;
       } else {
         return res.json().then(function (data) {
           throw new Error((data && data.errors) ? data.errors.map(function (e) { return e.message; }).join(', ') : 'Submission failed');
