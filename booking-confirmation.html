@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed | North Mankato Car Detailing</title>
+<meta name="description" content="Your booking with North Mankato Car Detailing is confirmed — here's what to expect.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="img/image.png">
+<link rel="apple-touch-icon" href="img/image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg-deep:#070D18;
+--bg-panel:#0F1E33;
+--bg-panel-2:#142A47;
+--chrome-100:#EDF1F5;
+--chrome-300:#C4CDD8;
+--chrome-400:#96A5B8;
+--chrome-600:#4A5A70;
+--blue-500:#2F6FFF;
+--blue-400:#5C8CFF;
+--blue-300:#8FB3FF;
+--border:rgba(150,165,184,0.16);
+--chrome-grad:linear-gradient(115deg,#AEB9C4 0%,#F4F7F9 22%,#8B97A6 45%,#F4F7F9 68%,#AEB9C4 100%);
+--font-display:'Oswald',sans-serif;
+--font-body:'Manrope',sans-serif;
+--font-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg-deep);color:var(--chrome-100);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+.container{max-width:1180px;margin:0 auto;padding:0 24px;}
+section{padding:96px 0;position:relative;}
+@media (max-width:720px){ section{padding:64px 0;} }
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;font-weight:600;line-height:1.08;letter-spacing:0.01em;}
+.eyebrow{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-300);display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--blue-400);flex-shrink:0;}
+:focus-visible{outline:2px solid var(--blue-400);outline-offset:3px;}
+.btn{font-family:var(--font-mono);font-size:0.92rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;padding:16px 30px;border-radius:6px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease;white-space:nowrap;}
+.btn::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);transition:left .55s ease;}
+.btn:hover::after{left:130%;}
+.btn-primary{background:var(--blue-500);color:#fff;box-shadow:0 8px 24px -6px rgba(47,111,255,0.55);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(47,111,255,0.7);}
+.btn-outline{background:transparent;color:var(--chrome-100);border-color:var(--chrome-600);}
+.btn-outline:hover{border-color:var(--blue-400);color:var(--blue-300);}
+header{position:sticky;top:0;z-index:100;background:rgba(7,13,24,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto;gap:20px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand img{height:42px;width:auto;}
+.brand-name{font-family:var(--font-display);font-size:0.95rem;letter-spacing:0.05em;text-transform:uppercase;line-height:1.1;}
+.brand-name span{display:block;font-family:var(--font-mono);font-size:0.62rem;color:var(--chrome-400);letter-spacing:0.16em;text-transform:uppercase;margin-top:2px;}
+.nav-links{display:flex;gap:32px;font-size:0.92rem;color:var(--chrome-300);}
+.nav-links a:hover{color:var(--blue-300);}
+@media (max-width:800px){ .nav-links{order:3;flex-basis:100%;justify-content:center;flex-wrap:wrap;gap:20px;padding-top:12px;margin-top:2px;border-top:1px solid var(--border);font-size:0.85rem;display:flex;} }
+@media (max-width:480px){ .brand-name{display:none;} }
+.confirm-wrap{max-width:640px;margin:0 auto;text-align:center;}
+.confirm-icon{font-size:2.6rem;margin-bottom:18px;}
+.confirm-wrap h1{font-size:clamp(1.8rem,4.4vw,2.6rem);margin-bottom:18px;}
+.confirm-wrap>p.lead{font-size:1.1rem;color:var(--chrome-300);margin-bottom:48px;}
+.info-card{background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:32px;text-align:left;margin-bottom:24px;}
+.info-card h2{font-size:1.15rem;margin-bottom:16px;}
+.info-card p{color:var(--chrome-300);font-size:0.98rem;margin-bottom:14px;}
+.info-card p:last-child{margin-bottom:0;}
+.info-card ul{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.info-card li{font-size:0.95rem;color:var(--chrome-300);display:flex;gap:10px;align-items:flex-start;}
+.info-card li::before{content:'✓';color:var(--blue-400);font-weight:700;flex-shrink:0;}
+.confirm-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px;}
+footer{border-top:1px solid var(--border);padding:56px 0 32px;background:var(--bg-deep);}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+@media (max-width:720px){ .foot-grid{grid-template-columns:1fr;gap:32px;} }
+.foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.foot-brand img{height:38px;}
+.foot-brand span{font-family:var(--font-display);text-transform:uppercase;font-size:0.95rem;letter-spacing:0.05em;}
+footer p{color:var(--chrome-400);font-size:0.9rem;}
+footer h4{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--chrome-400);margin-bottom:16px;}
+footer .foot-links li{margin-bottom:10px;font-size:0.92rem;}
+footer .foot-links a:hover{color:var(--blue-300);}
+.foot-bottom{border-top:1px solid var(--border);padding-top:24px;font-size:0.8rem;color:var(--chrome-600);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<a href="index.html" class="brand">
+<img src="img/image.png" alt="NM Premium Detailing">
+<span class="brand-name">Auto Detailing<span>North Mankato</span></span>
+</a>
+<nav class="nav-links" aria-label="Primary">
+<a href="index.html">Home</a>
+<a href="packages.html">Packages</a>
+<a href="how-it-works.html">How It Works</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main>
+<section>
+<div class="container confirm-wrap">
+<div class="confirm-icon">✅</div>
+<div class="eyebrow" style="justify-content:center;">Booking Received</div>
+<h1>You're all set!</h1>
+<p class="lead">Thank you for choosing North Mankato Car Detailing. We'll call or text you within the next 2 hours to confirm your appointment time.</p>
+
+<div class="info-card">
+<h2>Before your appointment</h2>
+<p>Please remove any major personal belongings from your vehicle, including the trunk — bags, shoes, sports equipment, and similar items.</p>
+<ul>
+<li>A few loose items like receipts or change under the seats are totally fine</li>
+<li>Just clear out anything bigger you'd want to keep track of</li>
+</ul>
+</div>
+
+<div class="info-card">
+<h2>What to expect at drop-off</h2>
+<p>When we get started, we'll walk your vehicle through a quick 20-point inspection — about 5 to 10 minutes. This lets us assess its current condition and note any pre-existing damage ahead of time, which protects both you and us.</p>
+</div>
+
+<div class="confirm-actions">
+<a class="btn btn-primary" href="tel:5079780537">Call/Text (507) 978-0537</a>
+<a class="btn btn-outline" href="index.html">Back to Home</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<div class="foot-grid">
+<div>
+<div class="foot-brand">
+<img src="img/image.png" alt="NM Premium Detailing">
+<span>North Mankato Car Detailing</span>
+</div>
+<p>Premium car detailing located in North Mankato, Minnesota.</p>
+</div>
+<div>
+<h4>Contact</h4>
+<ul class="foot-links">
+<li><a href="tel:5079780537">(507) 978-0537</a></li>
+<li>Located in North Mankato</li>
+</ul>
+</div>
+<div>
+<h4>Quick Links</h4>
+<ul class="foot-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="packages.html">Packages &amp; Pricing</a></li>
+<li><a href="how-it-works.html">How It Works</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-bottom">
+<span>&copy; 2026 North Mankato Car Detailing. All rights reserved. North Mankato, MN</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
